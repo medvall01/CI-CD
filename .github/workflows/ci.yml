@@ -42,4 +42,4 @@ jobs:
 
       - name: Deploy to Render
         if: success()
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: curl -X POST ${{ https://api.render.com/deploy/srv-cvv2r70gjchc73c201e0?key=O6F43PCwJ1M }}
