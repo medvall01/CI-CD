@@ -1,0 +1,33 @@
+name: Deploy to Render (on PR to main)
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy on PR to main
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Build
+        run: npm run build
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Trigger Render Deploy Hook
+        if: success()
+        run: curl -X POST ${{ secrets.RENDER_HOOK_URL}}
