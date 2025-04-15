@@ -4,10 +4,10 @@ import fs from "fs";
 import { displayUserName } from "./lib/index";
 import { User } from "./interfaces/index";
 
-const user:User = {
-    firstName: "John",
-    lastName: "Doe",
-}
+const user: User = {
+  firstName: "John",
+  lastName: "Doe",
+};
 
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
